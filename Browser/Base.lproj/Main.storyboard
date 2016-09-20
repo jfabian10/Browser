@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Browser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,72 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCN-cw-6Rf">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="1uJ-Ln-lkq"/>
+                                    <constraint firstAttribute="width" constant="24" id="K1M-mz-Pi0"/>
+                                </constraints>
+                                <state key="normal" image="BackGrayArrow"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2T1-xV-Yf6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6w-hr-V42">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="9TM-qU-Bha"/>
+                                    <constraint firstAttribute="height" constant="24" id="Qvx-VP-s44"/>
+                                </constraints>
+                                <state key="normal" image="ForwardGrayArrow"/>
+                                <connections>
+                                    <action selector="forwardButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hau-5N-NVK"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.nba.com/heat/" borderStyle="roundedRect" placeholder="Enter URL" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="pXb-aL-xys">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ExX-JJ-vpn"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Ueu-0f-NhI"/>
+                                </connections>
+                            </textField>
+                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTr-u6-c7i">
+                                <frame key="frameInset" minY="66" width="375" height="601"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZL8-rR-qAS"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="pXb-aL-xys" firstAttribute="leading" secondItem="N6w-hr-V42" secondAttribute="trailing" constant="8" id="1Da-sh-Izt"/>
+                            <constraint firstItem="pXb-aL-xys" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="BUY-Wl-zPe"/>
+                            <constraint firstItem="fCN-cw-6Rf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Bd8-Sd-tcH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pXb-aL-xys" secondAttribute="trailing" constant="20" id="G5T-tx-5eB"/>
+                            <constraint firstItem="fCN-cw-6Rf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="11" id="HPg-Jd-DHz"/>
+                            <constraint firstItem="N6w-hr-V42" firstAttribute="leading" secondItem="fCN-cw-6Rf" secondAttribute="trailing" constant="8" id="ZLX-1x-ORq"/>
+                            <constraint firstItem="N6w-hr-V42" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="11" id="hhH-oL-qbz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="fCN-cw-6Rf" id="g2d-04-zvp"/>
+                        <outlet property="forwardButton" destination="N6w-hr-V42" id="5NA-BM-JeP"/>
+                        <outlet property="urlTextField" destination="pXb-aL-xys" id="1dC-35-0Ry"/>
+                        <outlet property="webView" destination="aTr-u6-c7i" id="SK5-cE-WNy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-2018" y="-233"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackGrayArrow" width="85" height="85"/>
+        <image name="ForwardGrayArrow" width="85" height="85"/>
+    </resources>
 </document>
